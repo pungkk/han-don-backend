@@ -3,6 +3,6 @@ import { EventModule } from './modules/event/event.module';
 import { NoticeModule } from './modules/notice/notice.module';
 
 @Module({
-  imports: [EventModule, NoticeModule]
+  imports: [EventModule, NoticeModule],
 })
 export class PostModule {}
