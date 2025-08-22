@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
+import { BoardModule } from './board/board.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AppService } from './app.service';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
+    BoardModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
