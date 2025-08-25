@@ -22,7 +22,7 @@ export class PostEntity {
   title: string;
 
   @Column({
-    type: 'text',
+    type: 'longtext',
   })
   content: string;
 
