@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # NestJS Application
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USERNAME=han_don_user
+      - DB_PASSWORD=han_don_password
+      - DB_NAME=han_don_db
+    depends_on:
+      - mysql
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=han_don_db
+      - MYSQL_USER=han_don_user
+      - MYSQL_PASSWORD=han_don_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
