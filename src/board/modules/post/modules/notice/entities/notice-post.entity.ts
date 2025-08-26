@@ -3,9 +3,12 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { PostEntity } from '../../../entities/post.entity';
 
 @Entity({ name: 'notice_posts' })
 export class NoticePostEntity {
@@ -23,4 +26,12 @@ export class NoticePostEntity {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  /**********************************************
+   *                relationship                *
+   **********************************************/
+
+  @OneToOne(() => PostEntity, (post) => post.eventPost)
+  @JoinColumn({ name: 'post_id' })
+  post: PostEntity;
 }
