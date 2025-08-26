@@ -6,6 +6,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { AppController } from './app.controller';
 import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
@@ -42,6 +43,7 @@ import { BoardModule } from './board/board.module';
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         logging: ['error', 'query'],
         synchronize: false,
+        namingStrategy: new SnakeNamingStrategy(),
       }),
       dataSourceFactory: async (options: DataSourceOptions) => {
         const dataSource = new DataSource(options);
